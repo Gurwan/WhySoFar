@@ -4,15 +4,10 @@
     "version": "0.1.0",
 
     "action": {
-        "default_icon": {
-
-        },
         "default_title": "WhySoFar",
         "default_popup": "popup.html"
     },
-    "default_locale": "fr",
     "description": "Obtenir l'indicateur écologique d'un produit",
-    "icons": null,
 
     "author": "adressemail@gmail.com",
 
@@ -24,6 +19,4 @@
             "js": ["fnac.js"]
         }
     ]
-
-
 }
