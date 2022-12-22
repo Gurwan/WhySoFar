@@ -10,7 +10,9 @@ if(url.includes("cdiscount.com")){
             poids = el.getElementsByClassName("table__cell")[1].outerText;
         }
     });
-    ean = document.getElementsByClassName("loadbeeTab")[0].getAttribute("data-loadbee-product");
+    if(document.getElementsByClassName("loadbeeTab")[0] != undefined){
+        ean = document.getElementsByClassName("loadbeeTab")[0].getAttribute("data-loadbee-product");
+    }
     if(poids != 0 || ean != null){
         if(ean != null){
             origineCountry = convertToCountry(ean);
