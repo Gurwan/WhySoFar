@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "WhySoFar",
-    "version": "0.1.0",
+    "version": "0.3.0",
 
     "action": {
         "default_title": "WhySoFar",
@@ -12,11 +12,11 @@
     "author": "adressemail@gmail.com",
 
     "permissions": ["tabs"],
-    "host_permissions": ["https://*.fnac.com/*","https://*.cdiscount.com/*"],
+    "host_permissions": ["https://*.fnac.com/*","https://*.cdiscount.com/*","https://*.amazon.fr/*"],
     "content_scripts": [
         {
-            "matches": ["https://*.fnac.com/*","https://*.cdiscount.com/*"],
-            "js": ["fnac.js","cdiscount.js"]
+            "matches": ["https://*.fnac.com/*","https://*.cdiscount.com/*","https://*.amazon.fr/*"],
+            "js": ["fnac.js","cdiscount.js","amazon.js"]
         }
     ]
 }
