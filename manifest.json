@@ -12,11 +12,11 @@
     "author": "adressemail@gmail.com",
 
     "permissions": ["tabs"],
-    "host_permissions": ["https://*.fnac.com/*"],
+    "host_permissions": ["https://*.fnac.com/*","https://*.cdiscount.com/*"],
     "content_scripts": [
         {
-            "matches": ["https://*.fnac.com/*"],
-            "js": ["fnac.js","getCountry.js"]
+            "matches": ["https://*.fnac.com/*","https://*.cdiscount.com/*"],
+            "js": ["fnac.js","cdiscount.js"]
         }
     ]
 }

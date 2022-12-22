@@ -1,41 +1,41 @@
 url = window.location.toString();
 
-if(url.includes("fnac.com")){
-    var dl = document.querySelectorAll("dl");
+if(url.includes("cdiscount.com")){
+    var tr = document.querySelectorAll("tr");
     let poids = 0;
     let ean = null;
     let origineCountry = 'inconnu';
-    dl.forEach(function(el){
-        if(el.getElementsByClassName("f-productProperties__term")[0] != undefined && el.getElementsByClassName("f-productProperties__term")[0].innerHTML.toLowerCase().includes("poids")){
-            poids = el.getElementsByClassName("f-productProperties__definition")[0].outerText;
-        }
-        if(el.getElementsByClassName("f-productProperties__term")[0] != undefined && el.getElementsByClassName("f-productProperties__term")[0].innerHTML.toLowerCase().includes("ean")){
-            ean = el.getElementsByClassName("f-productProperties__definition")[0].outerText;
+    tr.forEach(function(el){
+        if(el.getElementsByClassName("table__cell")[0] != undefined && el.getElementsByClassName("table__cell")[0].innerHTML.toLowerCase().includes("poids")){
+            poids = el.getElementsByClassName("table__cell")[1].outerText;
         }
     });
+    ean = document.getElementsByClassName("loadbeeTab")[0].getAttribute("data-loadbee-product");
     if(poids != 0 || ean != null){
         if(ean != null){
             origineCountry = convertToCountry(ean);
         }
-    
-        const priceDiv = document.getElementsByClassName("f-productSection f-faPriceBox js-OfferPriceSwitcher")[0];
-    
+
+        const priceDiv = document.getElementsByClassName("fpPriceBloc jsFpPriceBloc fpSmallPrice")[0];
+
         let divInd = document.createElement("div");
         divInd.setAttribute("id","indicator-id");
         divInd.style.cssText = "margin-top:15px";
         let titleIndicateur = document.createElement("span");
         titleIndicateur.style.cssText = "font-weight:800;font-size:15px;color:black;";
-        titleIndicateur.appendChild(document.createTextNode("Indicateur WhySoFar FNAC"));
+        titleIndicateur.appendChild(document.createTextNode("Indicateur WhySoFar CDISCOUNT"));
         divInd.appendChild(titleIndicateur);
         let node = document.createTextNode("Le poids de ce produit est : " + poids + " et le pays d'origine est : " + origineCountry)
         let p = document.createElement("p");
         p.style.cssText = "font-size:13px; font-weight: 600";
         p.appendChild(node);
         divInd.appendChild(p);
-    
+
         insertAfterPrice(priceDiv,divInd)
     }
 }
+
+
 
 function convertToCountry(code){
     let origineCountry = null;
