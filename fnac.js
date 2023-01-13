@@ -13,16 +13,20 @@ if(url.includes("fnac.com")){
             ean = el.getElementsByClassName("f-productProperties__definition")[0].outerText;
         }
     });
-    if(poids != 0 || ean != null){
-        if(ean != null){
-            origineCountry = convertToCountry(ean);
-        }
-    
-        const priceDiv = document.getElementsByClassName("f-productSection f-faPriceBox js-OfferPriceSwitcher")[0];
-    
-        let divInd = document.createElement("div");
-        divInd.setAttribute("id","indicator-id");
-        divInd.style.cssText = "margin-top:15px";
+
+    if(ean != null){
+        origineCountry = convertToCountry(ean);
+    }
+
+    const priceDiv = document.getElementsByClassName("f-productSection f-faPriceBox js-OfferPriceSwitcher")[0];
+
+    let divInd = document.createElement("div");
+    divInd.setAttribute("id","indicator-id");
+    divInd.style.cssText = "margin-top:15px";
+    divInd.style.height = "150px";
+
+    if((poids != 0 || ean != null) && false){
+        
         let titleIndicateur = document.createElement("span");
         titleIndicateur.style.cssText = "font-weight:800;font-size:15px;color:black;";
         titleIndicateur.appendChild(document.createTextNode("Indicateur WhySoFar FNAC"));
@@ -35,6 +39,37 @@ if(url.includes("fnac.com")){
     
         insertAfterPrice(priceDiv,divInd)
     }
+
+    let indicator = indicate(origineCountry);
+    let image = document.createElement("img");
+    switch (indicator){
+        case 'A':
+            image.src = "https://i.ibb.co/bm4JQmx/ftp-a90.png";
+            break;
+        case 'B':
+            image.src = "https://i.ibb.co/r5Xm7rC/ftp-b90.png";
+            break;
+        case 'C':
+            image.src = "https://i.ibb.co/Swryrcp/ftp-c90.png";
+            break;
+        case 'D':
+            image.src = "https://i.ibb.co/V9Yyn9b/ftp-d90.png";
+            break;
+        case 'E':
+            image.src = "https://i.ibb.co/QY1pXwv/ftp-e90.png";
+            break;
+        case 'U':
+            image.src = "https://i.ibb.co/vPkm6bP/ftp-unknown.png";
+            break;
+        default:
+            image.src = "https://i.ibb.co/vPkm6bP/ftp-unknown.png";
+            break;
+    }
+    image.width = "244";
+    image.height = "150";
+
+    divInd.appendChild(image);
+    insertAfterPrice(priceDiv,divInd)
 }
 
 function convertToCountry(code){
@@ -132,6 +167,73 @@ function convertToCountry(code){
         origineCountry = eanCountry;
     }
     return origineCountry;
+}
+
+function indicate(country){
+    country = country.toUpperCase();
+    country = country.trim();
+    let ret = 'U';
+    switch(country){
+        case "FR":
+        case "FRANCE":
+            ret = 'A'
+            break;
+        case "DE":
+        case "ALLEMAGNE":
+        case "UK":
+        case "ROYAUME-UNI":
+        case "BE ou LX":
+        case "BELGIQUE":
+        case "LUXEMBOURG":
+        case "DK":
+        case "DANEMARK":
+        case "SUI":
+        case "SUISSE":
+        case "IT":
+        case "ITALIE":
+        case "ESP":
+        case "ESPAGNE":
+        case "NED":
+        case "SLOVAQUIE":
+        case "PAYS-BAS":
+        case "AUT":
+        case "AUTRICHE":
+            ret = 'B'
+            break;
+        case "FI":
+        case "FINLANDE":
+        case "NOR":
+        case "NORVEGE":
+        case "SUE":
+        case "SUEDE":
+        case "TUR":
+        case "TURQUIE":
+            ret = 'C';
+            break;
+        case "USA":
+        case "JP":
+        case "JAPON":
+        case "RU":
+        case "RUSSIE":
+        case "ADS":
+        case "AFRIQUE DU SUD":
+        case "CHINA":
+        case "CHINE":
+        case "CA":
+        case "CANADA":
+        case "COL":
+        case "COLOMBIE":
+        case "ARG":
+        case "ARGENTINE":
+        case "BRE":
+        case "BRESIL":
+        case "NZ":
+        case "TAÏWAN":
+        case "NOUVELLE ZELANDE":
+            ret = 'E';
+            break;
+    }
+    return ret;
 }
 
 function insertAfterPrice(divPrice, indicateurWSF) {
