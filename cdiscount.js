@@ -46,25 +46,25 @@ if(url.includes("cdiscount.com")){
     let image = document.createElement("img");
     switch (indicator){
         case 'A':
-            image.src = "https://i.ibb.co/bm4JQmx/ftp-a90.png";
+            image.src = "https://www.zupimages.net/up/23/06/x30z.png"; //https://i.ibb.co/bm4JQmx/ftp-a90.png";
             break;
         case 'B':
-            image.src = "https://i.ibb.co/r5Xm7rC/ftp-b90.png";
+            image.src = "https://www.zupimages.net/up/23/06/t5c6.png";//"https://i.ibb.co/r5Xm7rC/ftp-b90.png";
             break;
         case 'C':
-            image.src = "https://i.ibb.co/Swryrcp/ftp-c90.png";
+            image.src = "https://www.zupimages.net/up/23/06/9wh1.png";//"https://i.ibb.co/Swryrcp/ftp-c90.png";
             break;
         case 'D':
-            image.src = "https://i.ibb.co/V9Yyn9b/ftp-d90.png";
+            image.src = "https://www.zupimages.net/up/23/06/mk9i.png";//"https://i.ibb.co/V9Yyn9b/ftp-d90.png";
             break;
         case 'E':
-            image.src = "https://i.ibb.co/QY1pXwv/ftp-e90.png";
+            image.src = "https://www.zupimages.net/up/23/06/1o63.png";//"https://i.ibb.co/QY1pXwv/ftp-e90.png";
             break;
         case 'U':
-            image.src = "https://i.ibb.co/vPkm6bP/ftp-unknown.png";
+            image.src = "https://www.zupimages.net/up/23/06/mti6.png";//"https://i.ibb.co/vPkm6bP/ftp-unknown.png";
             break;
         default:
-            image.src = "https://i.ibb.co/vPkm6bP/ftp-unknown.png";
+            image.src = "https://www.zupimages.net/up/23/06/mti6.png";
             break;
     }
     image.width = "244";
