@@ -18,29 +18,11 @@ if(url.includes("cdiscount.com")){
         origineCountry = convertToCountry(ean);
     } 
 
-    let priceDiv = document.getElementsByClassName("fpPriceBloc jsFpPriceBloc fpSmallPrice")[0];
-    if(priceDiv == null ||priceDiv == undefined){
-        priceDiv = document.getElementsByClassName("fpPriceBloc jsFpPriceBloc fpSmallPrice  jsFpPurchasePriceBloc ")[0];
-    } 
+    let priceDiv = document.getElementsByClassName("fpDesCol")[0];
 
     let divInd = document.createElement("div");
     divInd.setAttribute("id","indicator-id");
     divInd.style.cssText = "margin-top:15px";
-
-    if((poids != 0 || ean != null) && false){
-        
-        let titleIndicateur = document.createElement("span");
-        titleIndicateur.style.cssText = "font-weight:800;font-size:15px;color:black;";
-        titleIndicateur.appendChild(document.createTextNode("Indicateur WhySoFar CDISCOUNT"));
-        divInd.appendChild(titleIndicateur);
-        let node = document.createTextNode("Le poids de ce produit est : " + poids + " et le pays d'origine est : " + origineCountry)
-        let p = document.createElement("p");
-        p.style.cssText = "font-size:13px; font-weight: 600";
-        p.appendChild(node);
-        divInd.appendChild(p);
-
-        insertAfterPrice(priceDiv,divInd)
-    }
 
     let indicator = indicate(origineCountry);
     let image = document.createElement("img");
@@ -70,8 +52,7 @@ if(url.includes("cdiscount.com")){
     image.width = "244";
     image.height = "150";
     divInd.appendChild(image);
-    console.log(divInd);
-    insertAfterPrice(priceDiv,divInd)
+    insert(priceDiv,divInd);
 }
 
 
@@ -240,6 +221,6 @@ function indicate(country){
     return ret;
 }
 
-function insertAfterPrice(divPrice, indicateurWSF) {
-    divPrice.parentNode.insertBefore(indicateurWSF, divPrice.nextSibling);
+function insert(divPrice, indicateurWSF) {
+    divPrice.appendChild(indicateurWSF)
 }

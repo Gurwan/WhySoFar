@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "WhySoFar",
-    "version": "0.4.3",
+    "version": "0.4.4",
 
     "action": {
         "default_title": "WhySoFar",
@@ -11,7 +11,7 @@
 
     "author": "adressemail@gmail.com",
 
-    "permissions": ["tabs"],
+    "permissions": [],
     "host_permissions": ["https://*.fnac.com/*","https://*.cdiscount.com/*","https://*.amazon.fr/*","https://*.boulanger.com/*"],
     "content_scripts": [
         {

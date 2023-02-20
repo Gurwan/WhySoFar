@@ -39,53 +39,40 @@ if(url.includes("boulanger.com")){
         origineCountry = convertToCountry(ean);
     }
 
-    if((poids != 0 || ean != null || origineCountry != 'inconnu') && false){
-        
+    let indicator = indicate(origineCountry);
+    let image = document.createElement("img");
+    switch (indicator){
+        case 'A':
+            image.src = "https://www.zupimages.net/up/23/06/x30z.png"; //https://i.ibb.co/bm4JQmx/ftp-a90.png";
+            break;
+        case 'B':
+            image.src = "https://www.zupimages.net/up/23/06/t5c6.png";//"https://i.ibb.co/r5Xm7rC/ftp-b90.png";
+            break;
+        case 'C':
+            image.src = "https://www.zupimages.net/up/23/06/9wh1.png";//"https://i.ibb.co/Swryrcp/ftp-c90.png";
+            break;
+        case 'D':
+            image.src = "https://www.zupimages.net/up/23/06/mk9i.png";//"https://i.ibb.co/V9Yyn9b/ftp-d90.png";
+            break;
+        case 'E':
+            image.src = "https://www.zupimages.net/up/23/06/1o63.png";//"https://i.ibb.co/QY1pXwv/ftp-e90.png";
+            break;
+        case 'U':
+            image.src = "https://www.zupimages.net/up/23/06/mti6.png";//"https://i.ibb.co/vPkm6bP/ftp-unknown.png";
+            break;
+        default:
+            image.src = "https://www.zupimages.net/up/23/06/mti6.png";
+            break;
+    }
     
-        let titleIndicateur = document.createElement("span");
-        titleIndicateur.style.cssText = "font-weight:800;font-size:15px;color:black;";
-        titleIndicateur.appendChild(document.createTextNode("Indicateur WhySoFar BOULANGER"));
-        divInd.appendChild(titleIndicateur);
-        let node = document.createTextNode("Le poids de ce produit est : " + poids + " et le pays d'origine est : " + origineCountry)
-        let p = document.createElement("p");
-        p.style.cssText = "font-size:13px; font-weight: 600";
-        p.appendChild(node);
-        divInd.appendChild(p);
+    image.width = "244";
+    image.height = "150";
+    image.style.left = "0";
+    image.style.position = "absolute";
+    divInd.appendChild(image);
+    divInd.style.marginBottom = "20px";
+    if(window.location.href.includes("ref")){
         insertAfterPrice(priceDiv,divInd)
-    } else {
-        let indicator = indicate(origineCountry);
-        let image = document.createElement("img");
-        switch (indicator){
-            case 'A':
-                image.src = "https://www.zupimages.net/up/23/06/x30z.png"; //https://i.ibb.co/bm4JQmx/ftp-a90.png";
-                break;
-            case 'B':
-                image.src = "https://www.zupimages.net/up/23/06/t5c6.png";//"https://i.ibb.co/r5Xm7rC/ftp-b90.png";
-                break;
-            case 'C':
-                image.src = "https://www.zupimages.net/up/23/06/9wh1.png";//"https://i.ibb.co/Swryrcp/ftp-c90.png";
-                break;
-            case 'D':
-                image.src = "https://www.zupimages.net/up/23/06/mk9i.png";//"https://i.ibb.co/V9Yyn9b/ftp-d90.png";
-                break;
-            case 'E':
-                image.src = "https://www.zupimages.net/up/23/06/1o63.png";//"https://i.ibb.co/QY1pXwv/ftp-e90.png";
-                break;
-            case 'U':
-                image.src = "https://www.zupimages.net/up/23/06/mti6.png";//"https://i.ibb.co/vPkm6bP/ftp-unknown.png";
-                break;
-            default:
-                image.src = "https://www.zupimages.net/up/23/06/mti6.png";
-                break;
-        }
-        image.width = "244";
-        image.height = "150";
-        image.style.right = "0";
-        image.style.position = "absolute";
-        divInd.appendChild(image);
-        if(window.location.href.includes("ref")){
-            insertAfterPrice(priceDiv,divInd)
-        }
     }
 }
 
@@ -256,3 +243,4 @@ function indicate(country){
 function insertAfterPrice(divPrice, indicateurWSF) {
     divPrice.parentNode.insertBefore(indicateurWSF, divPrice.nextSibling);
 }
+
